@@ -10,7 +10,7 @@
 |---|---|
 | **Problem Solved** | Raw Excel reports are hard to track manually. Managers need a unified system to evaluate throughput, detect blockers early, and group staff into objective performance tiers. |
 | **Solution** | Ingests Excel/Sheets automatically, plots **Daily, Weekly, and Monthly trends**, clusters team members into **3 Performance Tiers** using ML, and predicts scores using **Linear Regression ($R^2 \approx 0.94$)**. |
-| **Tech Stack** | React 18, TypeScript, Vite, Chart.js 4, Tailwind CSS, SheetJS (XLSX). |
+| **Tech Stack** | Next.js (App Router), React 19, TypeScript, Chart.js 4, Tailwind CSS, SheetJS (XLSX). |
 | **Dataset Included** | 20 cross-functional employees with daily work reports across sprint reporting cycles. |
 
 ---
@@ -172,39 +172,28 @@ cd workpulse-analytics
 # 3. Install dependencies
 npm install
 
-# 4. Start local development server
+# 4. Start local Next.js development server
 npm run dev
 ```
 
-Open **`http://localhost:5173/`** in your browser.
+Open **`http://localhost:3000/`** in your browser.
 
 ### Build for Production:
 ```bash
 npm run build
 ```
-Creates a zero-warning, tree-shaken, optimized bundle in `dist/`.
+Creates an optimized, pre-rendered Next.js production build in `.next/`.
 
 ---
 
-## 🌐 9. Deploying to Vercel (1-Click Setup)
+## 🌐 9. Deploying to Vercel (Native 1-Click Setup)
 
-This repository includes a pre-configured `vercel.json`:
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
-```
+Next.js is developed by Vercel, making deployment 100% zero-config:
 
-### Steps to Deploy:
-1. Push this repository to your GitHub account.
+1. Push this repository to your GitHub account (`preety81/workpulse-analytics`).
 2. Go to **[vercel.com/new](https://vercel.com/new)**.
-3. Select your repository (`preety81/workpulse-analytics`) and click **Deploy**.
-4. Your dashboard will be live on a public URL in under 60 seconds!
+3. Select your repository and click **Deploy**.
+4. Vercel automatically detects Next.js, compiles the build, and deploys it live in under 45 seconds!
 
 ---
 
