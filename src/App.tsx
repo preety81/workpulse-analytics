@@ -500,7 +500,7 @@ export const App: React.FC = () => {
                 className="flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-indigo-200 dark:border-indigo-800 bg-white/80 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all"
               >
                 <FiUsers className="text-sm" />
-                <span>⚡ 20-Employee Workforce Load Karein (380 Logs)</span>
+                <span>⚡ 20-Employee Workforce Load Karein (19-Day Sprint)</span>
               </button>
             </div>
           </div>

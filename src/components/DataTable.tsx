@@ -296,7 +296,7 @@ export const DataTable: React.FC<DataTableProps> = ({
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             <span>
-              <strong>{employees.length} Team Members</strong> successfully active across ML Tiers ({reports.length} total sprint reports).
+              <strong>{employees.length} Team Members</strong> successfully active across ML Tiers (19-Day Sprint Cycle).
             </span>
           </div>
           <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-100/60 dark:bg-emerald-900/40 px-2 py-0.5 rounded-md">

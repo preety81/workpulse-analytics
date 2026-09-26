@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Load full 20 Employees company dataset (380 logs)"
               >
                 <FiUsers className="text-sm text-emerald-600 dark:text-emerald-400" />
-                <span className="hidden md:inline font-bold">20 Employees (380 Logs)</span>
+                <span className="hidden md:inline font-bold">20 Employees (19 Days)</span>
                 <span className="md:hidden font-bold">20 Emps</span>
               </button>
             )}
