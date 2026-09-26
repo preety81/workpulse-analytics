@@ -547,12 +547,14 @@ export const App: React.FC = () => {
                     {timeView === 'monthly' && 'Monthly Performance & Score Stability'}
                   </h3>
                   <p className="text-[11px] text-slate-400">
-                    {hasData ? `${filteredReports.length} daily reports analyzed` : 'Awaiting data rows in connected sheet'}
+                    {hasData 
+                      ? (filteredEmployees.length > 1 ? `${filteredEmployees.length} team members analyzed` : `${filteredReports.length} daily logs analyzed`)
+                      : 'Awaiting data rows in connected sheet'}
                   </p>
                 </div>
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">
-                {hasData ? `${filteredReports.length} records` : '0 records'}
+                {hasData ? (filteredEmployees.length > 1 ? `${filteredEmployees.length} employees` : `${filteredReports.length} records`) : '0 records'}
               </span>
             </div>
 

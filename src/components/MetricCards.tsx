@@ -103,7 +103,7 @@ export const MetricCards: React.FC<MetricCardsProps> = ({ summary, topPerformer 
         </div>
         <div className="mt-2 flex items-center text-xs text-slate-500 dark:text-slate-400">
           <span className="truncate">
-            {hasData ? `Across ${summary.total_reports} daily reports` : 'None logged'}
+            {hasData ? `Across ${summary.total_interns} team members` : 'None logged'}
           </span>
         </div>
       </div>
