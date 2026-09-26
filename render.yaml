@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: workpulse-analytics
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./out
