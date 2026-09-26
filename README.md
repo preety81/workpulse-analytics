@@ -2,6 +2,9 @@
 
 > **A production-ready analytics dashboard that ingests Daily Work Reports from Excel or Google Sheets, visualizes performance trends across Daily, Weekly, and Monthly cycles, and applies Machine Learning (Unsupervised K-Means Clustering + Multivariate Linear Regression) to classify employees into performance tiers and forecast velocity.**
 
+- 🌐 **Live Production Link:** [https://workpulse-analytics.vercel.app](https://workpulse-analytics.vercel.app)
+- 📂 **GitHub Repository:** [https://github.com/preety81/workpulse-analytics](https://github.com/preety81/workpulse-analytics)
+
 ---
 
 ## 🎯 1. Project at a Glance (Quick Summary)
