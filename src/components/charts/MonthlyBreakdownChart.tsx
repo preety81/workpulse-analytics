@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../utils/chartSetup';
 import { Line } from 'react-chartjs-2';
 import { MonthlyTrendPoint } from '../../utils/trendAggregator';
 import { useTheme } from '../../context/ThemeContext';

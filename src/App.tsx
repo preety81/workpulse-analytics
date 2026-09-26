@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import './utils/chartSetup';
 import { 
   PerformanceDataset, 
   TimeViewMode, 
@@ -148,43 +149,49 @@ export const App: React.FC = () => {
 
   // Main Dataset State (defaults to 20-employee company workforce, 380 reports)
   const [dataset, setDataset] = useState<PerformanceDataset>(() => {
-    try {
-      const saved = localStorage.getItem('workpulse-user-dataset');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        // Only restore from localStorage if it has 2 or more employees
-        if (parsed && parsed.employees && parsed.employees.length >= 2 && parsed.daily_reports && parsed.daily_reports.length > 0) {
-          if (
-            !saved.includes('Aman Sharma') && 
-            !saved.includes('Priya Verma') &&
-            !saved.includes('Add ONE new row') &&
-            !saved.includes('previous day')
-          ) {
-            return sanitizeDatasetDates(parsed);
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('workpulse-user-dataset');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          // Only restore from localStorage if it has 2 or more employees
+          if (parsed && parsed.employees && parsed.employees.length >= 2 && parsed.daily_reports && parsed.daily_reports.length > 0) {
+            if (
+              !saved.includes('Aman Sharma') && 
+              !saved.includes('Priya Verma') &&
+              !saved.includes('Add ONE new row') &&
+              !saved.includes('previous day')
+            ) {
+              return sanitizeDatasetDates(parsed);
+            }
           }
         }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
     }
     // Default to the full 20-employee company dataset (380 logs)
     const initial20 = getSampleTeamDataset();
-    try {
-      localStorage.setItem('workpulse-user-dataset', JSON.stringify(initial20));
-    } catch {}
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('workpulse-user-dataset', JSON.stringify(initial20));
+      } catch {}
+    }
     return initial20;
   });
   
   // Connection Configuration
   const [connectionConfig, setConnectionConfig] = useState<SheetConnectionConfig>(() => {
-    try {
-      const saved = localStorage.getItem('workpulse-user-connection');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.url && !parsed.url.includes('Aarav_Sharma')) return parsed;
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('workpulse-user-connection');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.url && !parsed.url.includes('Aarav_Sharma')) return parsed;
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
     }
     return {
       type: 'google_sheets',

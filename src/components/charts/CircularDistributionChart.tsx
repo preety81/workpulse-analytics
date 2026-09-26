@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../utils/chartSetup';
 import { Doughnut } from 'react-chartjs-2';
 import { CircularDistributionPoint } from '../../utils/trendAggregator';
 import { useTheme } from '../../context/ThemeContext';

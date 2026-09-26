@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import '../../utils/chartSetup';
 import { Chart } from 'react-chartjs-2';
 import { DailyTrendPoint } from '../../utils/trendAggregator';
 import { useTheme } from '../../context/ThemeContext';

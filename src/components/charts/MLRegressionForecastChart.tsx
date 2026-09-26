@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../utils/chartSetup';
 import { Line } from 'react-chartjs-2';
 import { DailyTrendPoint } from '../../utils/trendAggregator';
 import { MLRegressionData } from '../../types';

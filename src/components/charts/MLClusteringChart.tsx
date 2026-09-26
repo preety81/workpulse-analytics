@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import '../../utils/chartSetup';
 import { Chart } from 'react-chartjs-2';
 import { EmployeeAggregate, MLClusteringData, DailyReportEntry } from '../../types';
 import { useTheme } from '../../context/ThemeContext';
