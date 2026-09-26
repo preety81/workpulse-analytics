@@ -2,6 +2,8 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
+import '../utils/chartSetup';
+import { ThemeProvider } from '../context/ThemeContext';
 
 // Dynamic client-side import for Chart.js and client state
 const DashboardApp = dynamic(() => import('../App'), {
@@ -19,5 +21,9 @@ const DashboardApp = dynamic(() => import('../App'), {
 });
 
 export default function HomePage() {
-  return <DashboardApp />;
+  return (
+    <ThemeProvider>
+      <DashboardApp />
+    </ThemeProvider>
+  );
 }

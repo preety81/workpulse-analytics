@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -11,23 +13,34 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    // Check localStorage or default to dark (modern look)
-    const saved = localStorage.getItem('workpulse-theme') as Theme;
-    if (saved) return saved;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  });
+  const [theme, setThemeState] = useState<Theme>('dark');
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
+    // Read localStorage or media query safely on client
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('workpulse-theme') as Theme;
+      if (saved && (saved === 'light' || saved === 'dark')) {
+        setThemeState(saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        setThemeState('light');
+      }
     }
-    localStorage.setItem('workpulse-theme', theme);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.classList.add('dark');
+        root.classList.remove('light');
+      } else {
+        root.classList.remove('dark');
+        root.classList.add('light');
+      }
+    }
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('workpulse-theme', theme);
+    }
   }, [theme]);
 
   const toggleTheme = () => {
@@ -48,7 +61,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    return {
+      theme: 'dark',
+      toggleTheme: () => {},
+      setTheme: () => {}
+    };
   }
   return context;
 };
